@@ -56,7 +56,6 @@
             this.textBoxDirectoryName.Name = "textBoxDirectoryName";
             this.textBoxDirectoryName.Size = new System.Drawing.Size(625, 20);
             this.textBoxDirectoryName.TabIndex = 1;
-            this.textBoxDirectoryName.Text = "C:\\Users\\Tomek\\Documents\\Classes\\70-160\\Lectures";
             this.textBoxDirectoryName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDirectoryName_KeyDown);
             // 
             // buttonLoad
@@ -112,6 +111,7 @@
             this.listBoxResults.Name = "listBoxResults";
             this.listBoxResults.Size = new System.Drawing.Size(703, 160);
             this.listBoxResults.TabIndex = 7;
+            this.listBoxResults.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listBoxResults_KeyPress);
             this.listBoxResults.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxResults_MouseDoubleClick);
             // 
             // labelDirectoryNameError
@@ -119,9 +119,8 @@
             this.labelDirectoryNameError.AutoSize = true;
             this.labelDirectoryNameError.Location = new System.Drawing.Point(96, 9);
             this.labelDirectoryNameError.Name = "labelDirectoryNameError";
-            this.labelDirectoryNameError.Size = new System.Drawing.Size(54, 13);
+            this.labelDirectoryNameError.Size = new System.Drawing.Size(0, 13);
             this.labelDirectoryNameError.TabIndex = 8;
-            
             // 
             // labelResultsNotFound
             // 
@@ -136,9 +135,8 @@
             this.labelDirectoryLoading.AutoSize = true;
             this.labelDirectoryLoading.Location = new System.Drawing.Point(156, 9);
             this.labelDirectoryLoading.Name = "labelDirectoryLoading";
-            this.labelDirectoryLoading.Size = new System.Drawing.Size(35, 13);
+            this.labelDirectoryLoading.Size = new System.Drawing.Size(0, 13);
             this.labelDirectoryLoading.TabIndex = 10;
-            
             // 
             // Form1
             // 

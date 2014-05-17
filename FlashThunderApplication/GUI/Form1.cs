@@ -14,6 +14,14 @@ namespace FlashThunderApplication
     public partial class Form1 : Form, IFileObserver
     {
         private IFlashThunder flashThunder;
+        
+        /// <summary>
+        /// Represents the integer values of various 'key down' actions
+        /// </summary>
+        public static class KeyValues
+        {
+            public const int Enter = 13;
+        }
 
         public Form1(IFlashThunder flashThunder)
         {
@@ -21,6 +29,8 @@ namespace FlashThunderApplication
             flashThunder.Subscribe(this);
             this.Icon = new Icon(@"ft.ico");
             InitializeComponent();
+
+            textBoxDirectoryName.Text = @"C:\Users\TomekM\Documents\NPS\LnL";
         }
 
         public void OnDone(string s)
@@ -106,6 +116,17 @@ namespace FlashThunderApplication
             if (index != System.Windows.Forms.ListBox.NoMatches)
             {
                 flashThunder.OpenFile(listBoxResults.SelectedItem.ToString());
+            }
+        }
+
+        private void listBoxResults_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == KeyValues.Enter)
+            {
+                if(listBoxResults.SelectedItem != null)
+                {
+                    flashThunder.OpenFile(listBoxResults.SelectedItem.ToString());
+                }
             }
         }
     }

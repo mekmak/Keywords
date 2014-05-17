@@ -129,5 +129,14 @@ namespace FlashThunderApplication
                 }
             }
         }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                textBoxDirectoryName.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
     }
 }

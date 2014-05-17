@@ -39,6 +39,8 @@
             this.labelDirectoryNameError = new System.Windows.Forms.Label();
             this.labelResultsNotFound = new System.Windows.Forms.Label();
             this.labelDirectoryLoading = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnBrowse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelDirectoryName
@@ -54,7 +56,7 @@
             // 
             this.textBoxDirectoryName.Location = new System.Drawing.Point(15, 25);
             this.textBoxDirectoryName.Name = "textBoxDirectoryName";
-            this.textBoxDirectoryName.Size = new System.Drawing.Size(625, 20);
+            this.textBoxDirectoryName.Size = new System.Drawing.Size(544, 20);
             this.textBoxDirectoryName.TabIndex = 1;
             this.textBoxDirectoryName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxDirectoryName_KeyDown);
             // 
@@ -138,11 +140,22 @@
             this.labelDirectoryLoading.Size = new System.Drawing.Size(0, 13);
             this.labelDirectoryLoading.TabIndex = 10;
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Location = new System.Drawing.Point(565, 25);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 11;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(733, 304);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.labelDirectoryLoading);
             this.Controls.Add(this.labelResultsNotFound);
             this.Controls.Add(this.labelDirectoryNameError);
@@ -173,7 +186,9 @@
         private System.Windows.Forms.ListBox listBoxResults;
         private System.Windows.Forms.Label labelDirectoryNameError;
         private System.Windows.Forms.Label labelResultsNotFound;
-        private System.Windows.Forms.Label labelDirectoryLoading;       
+        private System.Windows.Forms.Label labelDirectoryLoading;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button btnBrowse;       
     }
 }
 

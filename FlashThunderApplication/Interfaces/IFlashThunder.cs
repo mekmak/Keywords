@@ -11,6 +11,6 @@ namespace FlashThunderApplication.Interfaces
 
         HashSet<string> Query(string query);
 
-        bool LoadDirectory(string directoryName);
+        HashSet<string> LoadDirectory(string directoryName);
     }
 }

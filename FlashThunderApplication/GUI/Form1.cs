@@ -33,6 +33,8 @@ namespace FlashThunderApplication
             textBoxDirectoryName.Text = @"C:\Users\TomekM\Documents\NPS\LnL";
         }
 
+        #region IFileObserver Impl.
+
         public void OnDone(string s)
         {
             labelDirectoryLoading.Text = s;
@@ -42,6 +44,19 @@ namespace FlashThunderApplication
         {
             labelDirectoryLoading.Text = s;
             labelDirectoryLoading.Update();
+        }
+
+        #endregion
+
+        #region Button Event Handlers
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                textBoxDirectoryName.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
@@ -56,7 +71,8 @@ namespace FlashThunderApplication
             labelDirectoryNameError.Update();
             labelDirectoryLoading.Update();
 
-            if (!flashThunder.LoadDirectory(textBoxDirectoryName.Text))
+            HashSet<string> allFiles = flashThunder.LoadDirectory(textBoxDirectoryName.Text);
+            if (allFiles == null)
             {
                 Console.WriteLine("Error opening directory");
                 labelDirectoryNameError.ForeColor = Color.Red;
@@ -66,6 +82,8 @@ namespace FlashThunderApplication
             }
             labelDirectoryNameError.Text = "Loaded";
             labelDirectoryNameError.Update();
+
+            lbxFilesLoaded.DataSource = allFiles.ToList();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -89,6 +107,10 @@ namespace FlashThunderApplication
             
         }
 
+        #endregion
+
+        #region Textbox Event Handlers
+
         private void textBoxDirectoryName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -108,6 +130,10 @@ namespace FlashThunderApplication
                 e.Handled = true;
             }
         }
+
+        #endregion
+
+        #region Listbox Event Handlers
 
         private void listBoxResults_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -130,13 +156,29 @@ namespace FlashThunderApplication
             }
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void lbxFilesLoaded_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            DialogResult dialogResult = folderBrowserDialog1.ShowDialog();
-            if (dialogResult == DialogResult.OK)
+            int index = this.lbxFilesLoaded.IndexFromPoint(e.Location);
+
+            if (index != System.Windows.Forms.ListBox.NoMatches)
             {
-                textBoxDirectoryName.Text = folderBrowserDialog1.SelectedPath;
+                flashThunder.OpenFile(lbxFilesLoaded.SelectedItem.ToString());
             }
         }
+
+        #endregion
+
+        private void lbxFilesLoaded_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == KeyValues.Enter)
+            {
+                if (lbxFilesLoaded.SelectedItem != null)
+                {
+                    flashThunder.OpenFile(lbxFilesLoaded.SelectedItem.ToString());
+                }
+            }
+        }
+
+        
     }
 }

@@ -20,7 +20,7 @@ namespace FlashThunderApplication
             fileObservers = new HashSet<IFileObserver>();
         }
 
-        public bool LoadDirectory(string directoryName)
+        public HashSet<string> LoadDirectory(string directoryName)
         {
             DirectoryInfo dirInfo;
             mapFactory = null;
@@ -32,23 +32,23 @@ namespace FlashThunderApplication
             }
             catch
             {
-                return false;
+                return null;
             }
 
             if (!dirInfo.Exists)
             {
-                return false;
+                return null;
             }
 
             mapFactory = new MapFactory(dirInfo, this);
             if (!mapFactory.LoadMaps())
             {
-                return false;
+                return null;
             }
 
             mapsLoaded = true;
 
-            return true;
+            return mapFactory.AllFiles;
         }
 
         public HashSet<string> Query(string query)

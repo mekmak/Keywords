@@ -41,6 +41,9 @@
             this.labelDirectoryLoading = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.btnBrowse = new System.Windows.Forms.Button();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.lblFilesLoaded = new System.Windows.Forms.Label();
+            this.lbxFilesLoaded = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // labelDirectoryName
@@ -48,9 +51,9 @@
             this.labelDirectoryName.AutoSize = true;
             this.labelDirectoryName.Location = new System.Drawing.Point(12, 9);
             this.labelDirectoryName.Name = "labelDirectoryName";
-            this.labelDirectoryName.Size = new System.Drawing.Size(78, 13);
+            this.labelDirectoryName.Size = new System.Drawing.Size(75, 13);
             this.labelDirectoryName.TabIndex = 0;
-            this.labelDirectoryName.Text = "Enter directory:";
+            this.labelDirectoryName.Text = "Enter directory";
             // 
             // textBoxDirectoryName
             // 
@@ -75,9 +78,9 @@
             this.labelKeywords.AutoSize = true;
             this.labelKeywords.Location = new System.Drawing.Point(12, 61);
             this.labelKeywords.Name = "labelKeywords";
-            this.labelKeywords.Size = new System.Drawing.Size(56, 13);
+            this.labelKeywords.Size = new System.Drawing.Size(53, 13);
             this.labelKeywords.TabIndex = 3;
-            this.labelKeywords.Text = "Keywords:";
+            this.labelKeywords.Text = "Keywords";
             // 
             // textBoxKeywords
             // 
@@ -102,9 +105,9 @@
             this.labelResults.AutoSize = true;
             this.labelResults.Location = new System.Drawing.Point(12, 110);
             this.labelResults.Name = "labelResults";
-            this.labelResults.Size = new System.Drawing.Size(42, 13);
+            this.labelResults.Size = new System.Drawing.Size(79, 13);
             this.labelResults.TabIndex = 6;
-            this.labelResults.Text = "Results";
+            this.labelResults.Text = "Search Results";
             // 
             // listBoxResults
             // 
@@ -119,7 +122,7 @@
             // labelDirectoryNameError
             // 
             this.labelDirectoryNameError.AutoSize = true;
-            this.labelDirectoryNameError.Location = new System.Drawing.Point(96, 9);
+            this.labelDirectoryNameError.Location = new System.Drawing.Point(85, 307);
             this.labelDirectoryNameError.Name = "labelDirectoryNameError";
             this.labelDirectoryNameError.Size = new System.Drawing.Size(0, 13);
             this.labelDirectoryNameError.TabIndex = 8;
@@ -135,7 +138,7 @@
             // labelDirectoryLoading
             // 
             this.labelDirectoryLoading.AutoSize = true;
-            this.labelDirectoryLoading.Location = new System.Drawing.Point(156, 9);
+            this.labelDirectoryLoading.Location = new System.Drawing.Point(139, 307);
             this.labelDirectoryLoading.Name = "labelDirectoryLoading";
             this.labelDirectoryLoading.Size = new System.Drawing.Size(0, 13);
             this.labelDirectoryLoading.TabIndex = 10;
@@ -150,11 +153,32 @@
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
+            // lblFilesLoaded
+            // 
+            this.lblFilesLoaded.AutoSize = true;
+            this.lblFilesLoaded.Location = new System.Drawing.Point(12, 307);
+            this.lblFilesLoaded.Name = "lblFilesLoaded";
+            this.lblFilesLoaded.Size = new System.Drawing.Size(67, 13);
+            this.lblFilesLoaded.TabIndex = 12;
+            this.lblFilesLoaded.Text = "Files Loaded";
+            // 
+            // lbxFilesLoaded
+            // 
+            this.lbxFilesLoaded.FormattingEnabled = true;
+            this.lbxFilesLoaded.Location = new System.Drawing.Point(15, 323);
+            this.lbxFilesLoaded.Name = "lbxFilesLoaded";
+            this.lbxFilesLoaded.Size = new System.Drawing.Size(703, 160);
+            this.lbxFilesLoaded.TabIndex = 13;
+            this.lbxFilesLoaded.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.lbxFilesLoaded_KeyPress);
+            this.lbxFilesLoaded.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbxFilesLoaded_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 304);
+            this.ClientSize = new System.Drawing.Size(733, 503);
+            this.Controls.Add(this.lbxFilesLoaded);
+            this.Controls.Add(this.lblFilesLoaded);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.labelDirectoryLoading);
             this.Controls.Add(this.labelResultsNotFound);
@@ -188,7 +212,10 @@
         private System.Windows.Forms.Label labelResultsNotFound;
         private System.Windows.Forms.Label labelDirectoryLoading;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button btnBrowse;       
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.HelpProvider helpProvider1;
+        private System.Windows.Forms.Label lblFilesLoaded;
+        private System.Windows.Forms.ListBox lbxFilesLoaded;       
     }
 }
 

@@ -18,9 +18,17 @@ namespace FlashThunderApplication
             this.dirInfo = dirInfo;
             this.flashThunder = flashThunder;
             AllMaps = new HashSet<IMap>();
+            AllFiles = new HashSet<string>();
         }
 
         public HashSet<IMap> AllMaps
+        {
+            get;
+
+            private set;
+        }
+
+        public HashSet<string> AllFiles
         {
             get;
 
@@ -57,6 +65,8 @@ namespace FlashThunderApplication
                     Console.WriteLine(e);
                     continue;
                 }
+
+                AllFiles.Add(file.FullName);
 
                 // Split it because of annoying escape character stuff
                 string regexFirstPart = @"[\.\?";

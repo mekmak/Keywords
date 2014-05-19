@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FlashThunderApplication.Interfaces;
+using FlashThunderApplication.Context;
 
 namespace FlashThunderApplication
 {
@@ -179,6 +180,9 @@ namespace FlashThunderApplication
             }
         }
 
-        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Text += " " + ContextManager.Instance.AppContext.VersionNumber;
+        }        
     }
 }

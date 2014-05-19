@@ -69,7 +69,7 @@ namespace FlashThunderApplication
                 AllFiles.Add(file.FullName);
 
                 // Split it because of annoying escape character stuff
-                string regexFirstPart = @"[\.\?";
+                string regexFirstPart = @"[\<\>\.\?";
                 string regexSecondPart = "!;:()\",\r\t\v ]";
                 string regex = regexFirstPart + regexSecondPart;
 

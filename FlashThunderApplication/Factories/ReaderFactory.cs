@@ -11,31 +11,53 @@ namespace FlashThunderApplication
 {
     class ReaderFactory
     {
+        private enum FileType
+        {
+            Unknown,
+            PowerPoint,
+            Pdf,
+            Word,
+            Text,
+            Config,
+            Xml
+        }
+
+        private static Dictionary<string, FileType> RegexFileTypeMap = new Dictionary<string, FileType>
+        {
+            {@".*\.config", FileType.Config},
+            {@".*\.pdf", FileType.Pdf},
+            {@".*\.ppt", FileType.PowerPoint},
+            {@".*\.pptx", FileType.PowerPoint},
+            {@".*\.doc", FileType.Word},
+            {@".*\.docx", FileType.Word},
+            {@".*\.txt", FileType.Text},
+            {@".*\.xml", FileType.Xml}
+        };
+
         private ReaderFactory() { }
 
         public static IReader GetReader(string fileName)
         {
-            if (isPowerPoint(fileName))
-            {
-                return PowerPointReader.GetInstance(fileName);
-            }
+            FileType fileType = GetFileType(fileName);
 
-            if (isPDF(fileName))
+            switch(fileType)
             {
-                return PdfReader.GetInstance(fileName);
+                case FileType.Xml:
+                    return XmlReader.GetInstance(fileName);
+                case FileType.Config:
+                    return ConfigReader.GetInstance(fileName);
+                case FileType.Pdf:
+                    return PdfReader.GetInstance(fileName);
+                case FileType.PowerPoint:
+                    return PowerPointReader.GetInstance(fileName);
+                case FileType.Text:
+                    return TextFileReader.GetInstance(fileName);
+                case FileType.Word:
+                    return WordDocumentReader.GetInstance(fileName);
+                case FileType.Unknown:
+                default:
+                    return null;
             }
-
-            if (isWordDocument(fileName))
-            {
-                return WordDocumentReader.GetInstance(fileName);
-            }
-
-            if (isTextFile(fileName))
-            {
-                return TextFileReader.GetInstance(fileName);
-            }
-
-            return null;
         }
 
         public static void CleanUp()
@@ -44,24 +66,20 @@ namespace FlashThunderApplication
             WordDocumentReader.CleanUp();
         }
 
-        private static bool isPDF(string fileName)
+        private static FileType GetFileType(string fileName)
         {
-            return Regex.IsMatch(fileName, ".*pdf");
+            foreach(string regex in RegexFileTypeMap.Keys)
+            {
+
+                if (Regex.IsMatch(fileName, regex))
+                {
+                    return RegexFileTypeMap[regex];
+                }
+            }
+
+            return FileType.Unknown;
         }
 
-        private static bool isPowerPoint(string fileName)
-        {
-            return (Regex.IsMatch(fileName, ".*ppt") || Regex.IsMatch(fileName, ".*pptx"));
-        }
-
-        private static bool isWordDocument(string fileName)
-        {
-            return (Regex.IsMatch(fileName, ".*doc") || Regex.IsMatch(fileName, ".*docx"));
-        }
-
-        private static bool isTextFile(string fileName)
-        {
-            return Regex.IsMatch(fileName, ".*txt");
-        }
+        
     }
 }

@@ -167,8 +167,6 @@ namespace FlashThunderApplication
             }
         }
 
-        #endregion
-
         private void lbxFilesLoaded_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == KeyValues.Enter)
@@ -179,6 +177,8 @@ namespace FlashThunderApplication
                 }
             }
         }
+
+        #endregion        
 
         private void Form1_Load(object sender, EventArgs e)
         {

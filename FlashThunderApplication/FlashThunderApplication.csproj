@@ -191,6 +191,7 @@
     <Compile Include="Interfaces\IFlashThunder.cs" />
     <Compile Include="Interfaces\IMap.cs" />
     <Compile Include="Factories\MapFactory.cs" />
+    <Compile Include="Readers\ConfigReader.cs" />
     <Compile Include="Readers\TextFileReader.cs" />
     <Compile Include="Readers\WordDocumentReader.cs" />
     <Compile Include="Readers\PdfReader.cs" />
@@ -200,6 +201,7 @@
     <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Factories\ReaderFactory.cs" />
     <Compile Include="Maps\WordMap.cs" />
+    <Compile Include="Readers\XmlReader.cs" />
     <EmbeddedResource Include="GUI\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
